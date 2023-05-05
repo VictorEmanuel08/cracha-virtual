@@ -94,13 +94,17 @@ export function Login() {
               <ToastContainer />
             </div>
           )}
-          <div className="flex justify-between mt-3">
-            <p className="text-white hover:text-[#18C4B3]">
-              <a href="/create">Não possuo cadastro.</a>
-            </p>
-            <p className="text-white hover:text-[#18C4B3]">
-              <a href="/">Esqueci minha senha.</a>
-            </p>
+          <div className="flex flex-col items-center justify-center mt-3">
+            <div className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg my-2 py-1">
+              <p className="text-black font-semibold hover:text-white">
+                <a href="/create">Não possuo cadastro</a>
+              </p>
+            </div>
+            <div className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg mt-2 py-1">
+              <p className="text-black font-semibold hover:text-white">
+                <a href="/">Esqueci minha senha</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
