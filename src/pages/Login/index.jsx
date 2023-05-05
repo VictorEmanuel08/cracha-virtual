@@ -13,7 +13,7 @@ export function Login() {
 
   const notify = () => {
     toast.info("Bem-Vindo!", {
-      position: "top-right",
+      // position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
