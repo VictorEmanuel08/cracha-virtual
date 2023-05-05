@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export function Create() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [celular, setCelular] = useState("");
   const [urlLinkedin, setUrlLinkedin] = useState("");
   const [urlGithub, setUrlGithub] = useState("");
@@ -11,6 +12,15 @@ export function Create() {
   const [universidade, setUniversidade] = useState("");
   const [curso, setCurso] = useState("");
   const [bio, setBio] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   return (
     // <div className="w-full h-screen bg-loginBackground bg-cover flex items-center justify-center">
@@ -91,6 +101,68 @@ export function Create() {
               </div>
             </div>
 
+            {/* SENHA */}
+            <div>
+              <label
+                for="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Senha
+              </label>
+              <div className="mt-1">
+                <div className="flex flex-row">
+                  <input
+                    id="password"
+                    name="password"
+                    // type="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    placeholder="********"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    // onChange={(e) => setPassword(e.target.value)}
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute inset-y-0 right-0 px-3 py-1 text-sm font-medium text-gray-700 cursor-pointer"
+                  >
+                    {showPassword ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        class="feather feather-eye"
+                      >
+                        <path d="M22.191 11.336c-1.601-3.325-4.722-5.336-8.191-5.336s-6.59 2.011-8.191 5.336a.999.999 0 0 0 0 1.328c1.601 3.325 4.722 5.336 8.191 5.336s6.59-2.011 8.191-5.336a.999.999 0 0 0 0-1.328zm-8.191 3.664a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                        <path d="M12 8a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        class="feather feather-eye-off"
+                      >
+                        <path d="M22.191 11.336c-1.601-3.325-4.722-5.336-8.191-5.336s-6.59 2.011-8.191 5.336a.999.999 0 0 0 0 1.328c1.601 3.325 4.722 5.336 8.191 5.336s6.59-2.011 8.191-5.336a.999.999 0 0 0 0-1.328zm-8.191 3.664a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                        <path d="M19.541 16.458c-2.757 2.369-6.401 3.755-10.341 3.755-7.18 0-13-5.82-13-13 0-3.94 1.386-7.584 3.755-10.341l1.414 1.414c-1.982 1.982-3.169 4.703-3.169 7.672 0 6.074 4.926 11 11 11 2.969 0 5.69-1.187 7.672-3.169l1.414 1.414z" />
+                        <path d="M12 8a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {/* CELULAR */}
             <div>
               <label
@@ -168,6 +240,7 @@ export function Create() {
                   id="estado"
                   name="estado"
                   type="text"
+                  maxLength={2}
                   required
                   placeholder="Seu estado (Sigla)"
                   onChange={(e) => setEstado(e.target.value)}
