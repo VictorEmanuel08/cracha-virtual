@@ -16,6 +16,10 @@ module.exports = {
         "black-rgba": "rgba(0, 0, 0, 0.54)",
       },
     },
+    fontFamily: {
+      poppins: ["Poppins"],
+      roboto: ["Roboto"],
+    },
   },
   plugins: [],
 };

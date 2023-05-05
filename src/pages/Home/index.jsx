@@ -7,7 +7,7 @@ import iconTwitter from "../../assets/twitter.svg";
 
 export function Home() {
   return (
-    <div id="container" className="w-screen h-screen bg-black text-white">
+    <div id="container" classNameName="w-screen h-screen bg-black text-white">
       <div id="avatar" className="">
         <span>
           <img src={seloRocket} alt="Selo Rocketseat" />
@@ -28,8 +28,8 @@ export function Home() {
         <span id="userLogin">VictorEmanuel</span>
         {/* texto que não é parágrafo */}
       </a>
-      {/* a = atribuição será feita 
-            href = atributo -> referencia - linkar 
+      {/* a = atribuição será feita
+            href = atributo -> referencia - linkar
             "(conteudi=o) = valor do atributo" */}
 
       <p id="UserBio">"Um aluno focado em aprender programação Web</p>

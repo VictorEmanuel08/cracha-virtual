@@ -13,7 +13,7 @@ export function Login() {
 
   const notify = () => {
     toast.info("Bem-Vindo!", {
-      // position: "top-right",
+      position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -41,7 +41,7 @@ export function Login() {
           alt="background"
         />
       </div> */}
-      <div className="w-full h-screen bg-loginBackground bg-cover bg-no-repeat flex flex-col justify-center">
+      <div className="w-full h-screen bg-loginBackground bg-cover flex flex-col justify-center">
         <div className="max-w-[400px] w-full mx-auto bg-[#4263EB] rounded-lg p-8">
           <div className="w-full flex justify-center items-center my-2 bg-white rounded-lg ">
             <img src={Logo} alt={"Logo"} className="px-10" />
@@ -95,8 +95,10 @@ export function Login() {
             </div>
           )}
           <div className="flex justify-between mt-3">
-            <p></p>
-            <p className="text-white text-sm hover:text-[#18C4B3]">
+            <p className="text-white hover:text-[#18C4B3]">
+              <a href="/create">Não possuo cadastro.</a>
+            </p>
+            <p className="text-white hover:text-[#18C4B3]">
               <a href="/">Esqueci minha senha.</a>
             </p>
           </div>

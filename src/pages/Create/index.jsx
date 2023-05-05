@@ -1,0 +1,262 @@
+import logo from "../../assets/logoGETICOM.png";
+import React, { useState } from "react";
+
+export function Create() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [celular, setCelular] = useState("");
+  const [urlLinkedin, setUrlLinkedin] = useState("");
+  const [urlGithub, setUrlGithub] = useState("");
+  const [estado, setEstado] = useState("");
+  const [universidade, setUniversidade] = useState("");
+  const [curso, setCurso] = useState("");
+  const [bio, setBio] = useState("");
+
+  return (
+    // <div className="w-full h-screen bg-loginBackground bg-cover flex items-center justify-center">
+    //   <div className="w-3/5 h-4/5 bg-[#F5F5F5] flex flex-col items-center rounded-lg">
+    //     <div className="flex flex-col py-4">
+    //       <img src={logo} className="" />
+    //     </div>
+
+    //     <div className="">
+    //       <strong className="text-[#4263EB]">CRIE SEU CADASTRO</strong>
+    //     </div>
+    //     <div className="flex flex-col items-start">
+    //       <div className="flex flex-col">
+    //         <h3>NOME</h3>
+    //         <input type="email" />
+    //       </div>
+    //       <div className="flex flex-col">
+    //         <h3>E-MAIL</h3>
+    //         <input type="email" />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="font-poppins min-h-screen bg-loginBackground bg-cover flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <img
+              src={logo}
+              alt="Logo da empresa"
+              className="mx-auto w-3/5 w-auto"
+            />
+            <h2 className="my-6 text-center text-xl font-semibold text-[#4263EB]">
+              CRIE SEU CADASTRO
+            </h2>
+          </div>
+
+          <form className="space-y-4">
+            {/* NOME */}
+            <div>
+              <label
+                for="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Nome completo
+              </label>
+              <div className="mt-1">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Seu Nome da Silva"
+                  onChange={(e) => setName(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* E-MAIL */}
+            <div>
+              <label
+                for="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                E-mail
+              </label>
+              <div className="mt-1">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="seuemail@email.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* CELULAR */}
+            <div>
+              <label
+                for="celular"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Celular
+              </label>
+              <div className="mt-1">
+                <input
+                  id="celular"
+                  name="celular"
+                  type="cel"
+                  required
+                  pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
+                  onChange={(e) => setCelular(e.target.value)}
+                  placeholder="11 99999-9999"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* LINKEDIN */}
+            <div>
+              <label
+                for="urlLinkedin"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Linkedin
+              </label>
+              <div className="mt-1">
+                <input
+                  id="urlLinkedin"
+                  name="urlLinkedin"
+                  type="url"
+                  required
+                  placeholder="linkedin.com/in/seuLinkedin"
+                  onChange={(e) => setUrlLinkedin(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* GITHUB */}
+            <div>
+              <label
+                for="urlGithub"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Github
+              </label>
+              <div className="mt-1">
+                <input
+                  id="urlGithub"
+                  name="urlGithub"
+                  type="url"
+                  required
+                  placeholder="github.com/seuGithub"
+                  onChange={(e) => setUrlGithub(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* ESTADO */}
+            <div>
+              <label
+                for="estado"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Estado
+              </label>
+              <div className="mt-1">
+                <input
+                  id="estado"
+                  name="estado"
+                  type="text"
+                  required
+                  placeholder="Seu estado (Sigla)"
+                  onChange={(e) => setEstado(e.target.value)}
+                  className="uppercase appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+              <option value="SP">SP</option>
+              <option value="RJ">RJ</option>
+              <option value="PB">PB</option>
+            </select> */}
+
+            {/* UNIVERSIDADE */}
+            <div>
+              <label
+                for="universidade"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Universidade
+              </label>
+              <div className="mt-1">
+                <input
+                  id="universidade"
+                  name="universidade"
+                  type="text"
+                  required
+                  placeholder="Sua universidade"
+                  onChange={(e) => setUniversidade(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* CURSO */}
+            <div>
+              <label
+                for="curso"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Curso
+              </label>
+              <div className="mt-1">
+                <input
+                  id="curso"
+                  name="curso"
+                  type="text"
+                  required
+                  placeholder="Seu curso"
+                  onChange={(e) => setCurso(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* BIO */}
+            <div>
+              <label
+                for="bio"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Bio
+              </label>
+              <div className="mt-1">
+                <textarea
+                  id="bio"
+                  name="bio"
+                  type="text"
+                  required
+                  placeholder="Escreva sobre você..."
+                  onChange={(e) => setBio(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Cadastrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
