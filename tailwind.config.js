@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        loginBackground: "url('backgroundGETICOM.jpg')",
+        "mais-gradient": "linear-gradient(90deg, #4263EB 0%, #4263EB00 100%)",
+      },
       colors: {
         "dark-purple": "#4263EB",
         "light-white": "#748FFC",

@@ -35,22 +35,22 @@ export function Home() {
       <p id="UserBio">"Um aluno focado em aprender programação Web</p>
 
       <ul id="socialLinks">
-        <li class="youtube">
+        <li id="youtube">
           <a href="https://www.youtube.com/" target="_blank">
             <img src={iconYoutube} alt="ícone youtube" />
           </a>
         </li>
-        <li class="instagram">
+        <li id="instagram">
           <a href="https://www.instagram.com/" target="_blank">
             <img src={iconInstagram} alt="icone instagram" />
           </a>
         </li>
-        <li class="facebook">
+        <li id="facebook">
           <a href="https://pt-br.facebook.com/" target="_blank">
             <img src={iconFacebook} alt="icone facebook" />
           </a>
         </li>
-        <li class="twitter">
+        <li id="twitter">
           <a href="https://twitter.com/" target="_blank" rel="noopener">
             <img src={iconTwitter} alt="icone twitter" />
           </a>
