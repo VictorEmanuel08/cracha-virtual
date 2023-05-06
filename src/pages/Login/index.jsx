@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../../assets/logoGETICOM.png";
 import { useNavigate } from "react-router-dom";
-// import backgroundImgNew from "../../assets/backgroundGETICOM.jpg";
+import backgroundImgNew from "../../assets/backgroundGETICOM.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,15 +31,18 @@ export function Login() {
     }, 1000);
   }
 
+  console.log(mat)
+
   return (
     <div className="w-full h-screen">
-      {/* <div className="w-full h-screen grid grid-cols-1 sm:grid-cols-2"> */}
-      {/* <div className="hidden sm:block">
-        <img
-          className="w-full h-screen object-cover"
-          src={backgroundImgNew}
-          alt="background"
-        />
+      {/* <div className="w-full h-screen grid grid-cols-1 sm:grid-cols-2">
+        <div className="hidden sm:block">
+          <img
+            className="w-full h-screen object-cover"
+            src={backgroundImgNew}
+            alt="background"
+          />
+        </div>
       </div> */}
       <div className="w-full h-screen bg-loginBackground bg-cover flex flex-col justify-center">
         <div className="max-w-[400px] w-full mx-auto bg-[#4263EB] rounded-lg p-8">
@@ -48,7 +51,7 @@ export function Login() {
           </div>
           <div className="flex flex-col py-1">
             <label htmlFor="mat" className="text-zinc-200">
-              Matrícula
+              Id
             </label>
             <input
               className="border p-2 rounded outline-none text-zinc-700"
@@ -79,7 +82,7 @@ export function Login() {
           {mat.length === 0 || password.length === 0 ? (
             <button
               disabled={true}
-              className="bg-[#18C4B3] w-full my-2 py-2 rounded-md text-white hover:bg-[#16b1a1] duration-300 cursor-not-allowed"
+              className="bg-[#18C4B3] w-full my-2 py-2 rounded-md text-white hover:bg-[#16b1a1] cursor-not-allowed transform transition-all duration-300 hover:scale-110"
             >
               Entrar
             </button>
@@ -87,7 +90,7 @@ export function Login() {
             <div>
               <button
                 onClick={handleSubmit}
-                className="bg-[#18C4B3] w-full my-2 py-2 rounded-md text-white hover:bg-[#16b1a1] duration-300"
+                className="bg-[#18C4B3] w-full my-2 py-2 rounded-md text-white hover:bg-[#16b1a1] transform transition-all duration-300 hover:scale-110"
               >
                 Entrar
               </button>
@@ -95,16 +98,12 @@ export function Login() {
             </div>
           )}
           <div className="flex flex-col items-center justify-center mt-3">
-            <div className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg my-2 py-1">
-              <p className="text-black font-semibold hover:text-white">
-                <a href="/create">Não possuo cadastro</a>
-              </p>
-            </div>
-            <div className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg mt-2 py-1">
-              <p className="text-black font-semibold hover:text-white">
-                <a href="/">Esqueci minha senha</a>
-              </p>
-            </div>
+            <button className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg my-2 py-1 text-black font-semibold hover:text-white transform transition-all duration-300 hover:scale-110">
+              <a href="/create">Não possuo cadastro</a>
+            </button>
+            <button className="w-3/5 flex items-center justify-center bg-white hover:bg-[#87CEFA] rounded-lg mt-2 py-1 text-black font-semibold hover:text-white transform transition-all duration-300 hover:scale-110  ">
+              <a href="/">Esqueci minha senha</a>
+            </button>
           </div>
         </div>
       </div>

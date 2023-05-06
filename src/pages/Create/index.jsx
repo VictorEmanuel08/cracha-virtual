@@ -1,6 +1,9 @@
 import logo from "../../assets/logoGETICOM.png";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -17,15 +20,43 @@ export function Create() {
   const [universidade, setUniversidade] = useState("");
   const [curso, setCurso] = useState("");
   const [bio, setBio] = useState("");
+  const [imagemAluno, setImageAluno] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  function navegar() {
-    navigate("/");
+  function backPage() {
+    navigate(-1);
   }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const notify = () => {
+    toast.success("Cadastro criado!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  async function createCadastro() {
+    try {
+      // await app.post("/cadastro", {
+      //   name: name
+      // });
+      notify();
+      setTimeout(() => {
+        // navigate(-1);
+      }, 2000);
+    } catch {
+      alert("Ocorreu um erro. Tente novamente.");
+    }
+  }
 
   return (
     // <div className="w-full h-screen bg-loginBackground bg-cover flex items-center justify-center">
@@ -53,15 +84,21 @@ export function Create() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <div className="relative flex flex-row items-center justify-center ">
+              <button onClick={backPage} className="absolute left-6 bg-indigo-600 rounded-lg hover:bg-[#18C4B3] transform transition-all duration-200 hover:scale-110">
+                <ArrowBackIcon className="text-white" />
+              </button>
+              <h2 className="text-center text-2xl font-semibold text-[#4263EB]">
+                CRIE SEU CADASTRO
+              </h2>
+            </div>
+
             <img
               src={logo}
               alt="Logo da empresa"
-              className="mx-auto w-3/5 w-auto cursor-pointer"
-              onClick={navegar}
+              className="mt-3 mb-5 mx-auto w-3/5 w-auto cursor-pointer transform transition-all duration-200 hover:scale-105"
+              onClick={backPage}
             />
-            <h2 className="my-6 text-center text-xl font-semibold text-[#4263EB]">
-              CRIE SEU CADASTRO
-            </h2>
           </div>
 
           <form className="space-y-4">
@@ -153,7 +190,7 @@ export function Create() {
                   name="celular"
                   type="cel"
                   required
-                  pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
+                  // pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
                   onChange={(e) => setCelular(e.target.value)}
                   placeholder="11 99999-9999"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -174,7 +211,7 @@ export function Create() {
                   id="urlLinkedin"
                   name="urlLinkedin"
                   type="url"
-                  required
+                  // required
                   placeholder="linkedin.com/in/seuLinkedin"
                   onChange={(e) => setUrlLinkedin(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -195,7 +232,7 @@ export function Create() {
                   id="urlGithub"
                   name="urlGithub"
                   type="url"
-                  required
+                  // required
                   placeholder="github.com/seuGithub"
                   onChange={(e) => setUrlGithub(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -295,10 +332,33 @@ export function Create() {
               </div>
             </div>
 
+            {/* IMAGE */}
+            <div>
+              <label
+                htmlFor="image"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Foto
+              </label>
+              <div className="mt-1">
+                <input
+                  id="image"
+                  type="file"
+                  name="image"
+                  accept="image/png, image/jpeg"
+                  required
+                  // placeholder="Escreva sobre você..."
+                  onChange={(e) => setImageAluno(e.target.value)}
+                  // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={createCadastro}
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-all duration-200 hover:scale-105"
               >
                 Cadastrar
               </button>
