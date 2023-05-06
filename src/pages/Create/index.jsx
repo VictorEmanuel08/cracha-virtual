@@ -21,6 +21,7 @@ export function Create() {
   const [curso, setCurso] = useState("");
   const [bio, setBio] = useState("");
   const [imagemAluno, setImageAluno] = useState("");
+  const [corAluno, setCorAluno] = useState("#FFFFFF");
   const [showPassword, setShowPassword] = useState(false);
 
   function backPage() {
@@ -85,7 +86,10 @@ export function Create() {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div className="relative flex flex-row items-center justify-center ">
-              <button onClick={backPage} className="absolute left-6 bg-indigo-600 rounded-lg hover:bg-[#18C4B3] transform transition-all duration-200 hover:scale-110">
+              <button
+                onClick={backPage}
+                className="absolute left-6 bg-indigo-600 rounded-lg hover:bg-[#18C4B3] transform transition-all duration-200 hover:scale-110"
+              >
                 <ArrowBackIcon className="text-white" />
               </button>
               <h2 className="text-center text-2xl font-semibold text-[#4263EB]">
@@ -338,21 +342,44 @@ export function Create() {
                 htmlFor="image"
                 className="block text-sm font-medium text-gray-700"
               >
-                Foto
+                Envie uma foto sua
               </label>
               <div className="mt-1">
                 <input
                   id="image"
                   type="file"
                   name="image"
-                  accept="image/png, image/jpeg"
+                  accept="image/png, image/jpeg, image/jpg"
                   required
-                  // placeholder="Escreva sobre você..."
                   onChange={(e) => setImageAluno(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* COR */}
+            <div>
+              <label
+                htmlFor="cor"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Selecione a cor do seu crachá
+              </label>
+              <div className="mt-1">
+                <input
+                  id="cor"
+                  type="color"
+                  name="cor"
+                  value={corAluno}
+                  required
+                  onChange={(e) => setCorAluno(e.target.value)}
                   // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
+            {/* {console.log(corAluno)}
+            <div style={{backgroundColor: corAluno}} className="w-full h-8 rounded-full">
+            </div> */}
 
             <div>
               <button
