@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { Estados } from "../../components/Estados";
 
 export function Create() {
   const navigate = useNavigate();
@@ -245,7 +246,7 @@ export function Create() {
             </div>
 
             {/* ESTADO */}
-            <div>
+            {/* <div>
               <label
                 htmlFor="estado"
                 className="block text-sm font-medium text-gray-700"
@@ -264,14 +265,9 @@ export function Create() {
                   className="uppercase appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-            </div>
+            </div> */}
 
-            {/* <label htmlFor="estado">Estado</label>
-            <select id="estado" name="estado">
-              <option value="SP">SP</option>
-              <option value="RJ">RJ</option>
-              <option value="PB">PB</option>
-            </select> */}
+            <Estados/>
 
             {/* UNIVERSIDADE */}
             <div>
