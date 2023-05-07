@@ -1,12 +1,14 @@
 import logo from "../../assets/logoGETICOM.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { Estados } from "../../components/Estados";
+// import { Estados } from "../../components/Estados";
+import { app } from "../../api/app";
 
 export function Create() {
   const navigate = useNavigate();
@@ -17,13 +19,24 @@ export function Create() {
   const [celular, setCelular] = useState("");
   const [urlLinkedin, setUrlLinkedin] = useState("");
   const [urlGithub, setUrlGithub] = useState("");
-  const [estado, setEstado] = useState("");
+  const [urlInstagram, setUrlInstagram] = useState("");
+  // const [estado, setEstado] = useState("");
+  // const [cidade, setCidade] = useState("");
   const [universidade, setUniversidade] = useState("");
   const [curso, setCurso] = useState("");
+  const [areaAluno, setAreaAluno] = useState("");
   const [bio, setBio] = useState("");
   const [imagemAluno, setImageAluno] = useState("");
-  const [corAluno, setCorAluno] = useState("#FFFFFF");
+  const [corCrachaAluno, setCorCrachaAluno] = useState("#FFFFFF");
+  const [corFonte, setCorFonte] = useState("#000000");
+  const [cardAluno, setCardAluno] = useState({
+    id: 1,
+    cor_fundo: corCrachaAluno,
+    cor_texto: corFonte,
+    fonte: "Arial",
+  });
   const [showPassword, setShowPassword] = useState(false);
+  const [dados, setDados] = useState("");
 
   function backPage() {
     navigate(-1);
@@ -46,42 +59,106 @@ export function Create() {
     });
   };
 
-  async function createCadastro() {
+  useEffect(() => {
+    axios
+      .get("/api/busca/001")
+      .then((response) => setDados(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(dados);
+
+  // async function createCadastro() {
+  //   try {
+  //     await axios.post("/api/cadastro/${user_id}", {
+  //       id: 11,
+  //       nfc_id: "0011",
+  //       nome: name,
+  //       email: email,
+  //       celular: celular,
+  //       bio: bio,
+  //       linkedin: urlLinkedin,
+  //       github: urlGithub,
+  //       instagram: urlInstagram,
+  //       area_profissional: areaAluno,
+  //       curso: curso,
+  //       universidade: universidade,
+  //       card: cardAluno,
+  //     });
+  //     // notify();
+  //     console.log("ok");
+  //     alert("sucess!.");
+  //   } catch {
+  //     alert("Ocorreu um erro. Tente novamente.");
+  //   }
+  // }
+
+  const createCadastro = async e => {
+    e.preventDefault();
     try {
-      // await app.post("/cadastro", {
-      //   name: name
-      // });
+      const result = await axios.post("/api/cadastro/001", {
+        id: 11,
+        nfc_id: "0011",
+        nome: name,
+        email: email,
+        celular: celular,
+        bio: bio,
+        linkedin: urlLinkedin,
+        github: urlGithub,
+        instagram: urlInstagram,
+        area_profissional: areaAluno,
+        curso: curso,
+        universidade: universidade,
+        card: cardAluno,
+      });
       notify();
-      setTimeout(() => {
-        // navigate(-1);
-      }, 2000);
-    } catch {
+      console.log(result);
+      alert("sucess!");
+      navigate(-1)
+    } catch (error){
       alert("Ocorreu um erro. Tente novamente.");
+      console.log(error)
     }
   }
 
-  return (
-    // <div className="w-full h-screen bg-loginBackground bg-cover flex items-center justify-center">
-    //   <div className="w-3/5 h-4/5 bg-[#F5F5F5] flex flex-col items-center rounded-lg">
-    //     <div className="flex flex-col py-4">
-    //       <img src={logo} className="" />
-    //     </div>
+  // function handleSaveEstado(state){
+  //   setEstado(state)
+  // }
+  // function handleSaveCidade(city){
+  //   setCidade(city)
+  // }
 
-    //     <div className="">
-    //       <strong className="text-[#4263EB]">CRIE SEU CADASTRO</strong>
-    //     </div>
-    //     <div className="flex flex-col items-start">
-    //       <div className="flex flex-col">
-    //         <h3>NOME</h3>
-    //         <input type="email" />
-    //       </div>
-    //       <div className="flex flex-col">
-    //         <h3>E-MAIL</h3>
-    //         <input type="email" />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
+  function handleChangeColorBack(event) {
+    const cor = event.target.value;
+    setCorCrachaAluno(cor);
+    cardAluno.cor_fundo = corCrachaAluno;
+  }
+  function handleChangeColorText(event) {
+    const cor = event.target.value;
+    setCorFonte(cor);
+    cardAluno.cor_texto = corFonte;
+  }
+
+  const teste = {
+    id: 0,
+    nfc_id: "",
+    nome: name,
+    email: email,
+    senha: password,
+    celular: celular,
+    bio: bio,
+    image: imagemAluno,
+    linkedin: urlLinkedin,
+    github: urlGithub,
+    instagram: areaAluno,
+    area_profissional: urlInstagram,
+    curso: curso,
+    universidade: universidade,
+    card: cardAluno,
+  };
+  // console.log(teste);
+
+  return (
     <div className="font-poppins min-h-screen bg-loginBackground bg-cover flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
@@ -245,6 +322,27 @@ export function Create() {
               </div>
             </div>
 
+            {/* INSTAGRAM */}
+            <div>
+              <label
+                htmlFor="urlInstagram"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Instagram
+              </label>
+              <div className="mt-1">
+                <input
+                  id="urlInstagram"
+                  name="urlInstagram"
+                  type="url"
+                  // required
+                  placeholder="instagram.com/seuInstagram"
+                  onChange={(e) => setUrlInstagram(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
             {/* ESTADO */}
             {/* <div>
               <label
@@ -266,8 +364,7 @@ export function Create() {
                 />
               </div>
             </div> */}
-
-            <Estados/>
+            {/* <Estados saveEstado={handleSaveEstado} saveCidade={handleSaveCidade}/> */}
 
             {/* UNIVERSIDADE */}
             <div>
@@ -306,6 +403,27 @@ export function Create() {
                   required
                   placeholder="Seu curso"
                   onChange={(e) => setCurso(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* ÁREA PROFISSIONAL */}
+            <div>
+              <label
+                htmlFor="areaProfissional"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Área profissional
+              </label>
+              <div className="mt-1">
+                <input
+                  id="areaProfissional"
+                  name="areaProfissional"
+                  type="text"
+                  required
+                  placeholder="Sua área"
+                  onChange={(e) => setAreaAluno(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -353,30 +471,57 @@ export function Create() {
               </div>
             </div>
 
-            {/* COR */}
+            {/* COR CRACHÁ */}
             <div>
               <label
-                htmlFor="cor"
+                htmlFor="corCracha"
                 className="block text-sm font-medium text-gray-700"
               >
                 Selecione a cor do seu crachá
               </label>
               <div className="mt-1">
                 <input
-                  id="cor"
+                  id="corCracha"
                   type="color"
-                  name="cor"
-                  value={corAluno}
+                  name="corCracha"
+                  value={corCrachaAluno}
                   required
-                  onChange={(e) => setCorAluno(e.target.value)}
+                  onChange={handleChangeColorBack}
                   // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
-            {/* {console.log(corAluno)}
-            <div style={{backgroundColor: corAluno}} className="w-full h-8 rounded-full">
-            </div> */}
 
+            {/* COR FONTE */}
+            <div>
+              <label
+                htmlFor="corFonte"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Selecione a cor da fonte do seu crachá
+              </label>
+              <div className="mt-1">
+                <input
+                  id="corFonte"
+                  type="color"
+                  name="corFonte"
+                  value={corFonte}
+                  required
+                  onChange={handleChangeColorText}
+                  // className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            {/* EXEMPLO */}
+            <div
+              style={{ backgroundColor: corCrachaAluno, color: corFonte }}
+              className="w-full h-8 rounded-full flex items-center justify-center"
+            >
+              <p>EXEMPLO DE COMO FICARÁ NO CRACHÁ</p>
+            </div>
+
+            {/* BOTÃO CADASTRAR */}
             <div>
               <button
                 type="submit"

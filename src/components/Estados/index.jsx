@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export function Estados() {
+export const Estados = ({saveEstado, saveCidade}) => {
   const [ufs, setUfs] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedUf, setSelectedUf] = useState("0");
@@ -31,11 +31,14 @@ export function Estados() {
   function handleSelectUf(event) {
     const uf = event.target.value;
     setSelectedUf(uf);
+    console.log(uf)
+    saveEstado(uf)
   }
 
   function handleSelectCity(event) {
     const city = event.target.value;
     setSelectedCity(city);
+    saveCidade(city)
   }
 
   return (
@@ -52,7 +55,7 @@ export function Estados() {
             Selecione uma UF
           </option>
           {ufs.map((uf) => (
-            <option value={uf.sigla}>{uf.nome}</option>
+            <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
           ))}
         </select>
       </div>
