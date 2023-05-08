@@ -8,7 +8,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 // import { Estados } from "../../components/Estados";
-import { app } from "../../api/app";
+// import { app } from "../../api/app";
 
 export function Create() {
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ export function Create() {
     cor_fundo: corCrachaAluno,
     cor_texto: corFonte,
     fonte: "Arial",
+    foto: imagemAluno,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [dados, setDados] = useState("");
@@ -61,7 +62,7 @@ export function Create() {
 
   useEffect(() => {
     axios
-      .get("/api/busca/001")
+      .get("/api/users/2")
       .then((response) => setDados(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -93,33 +94,56 @@ export function Create() {
   //   }
   // }
 
-  const createCadastro = async e => {
-    e.preventDefault();
-    try {
-      const result = await axios.post("/api/cadastro/001", {
-        id: 11,
-        nfc_id: "0011",
-        nome: name,
-        email: email,
-        celular: celular,
-        bio: bio,
-        linkedin: urlLinkedin,
-        github: urlGithub,
-        instagram: urlInstagram,
-        area_profissional: areaAluno,
-        curso: curso,
-        universidade: universidade,
-        card: cardAluno,
-      });
-      notify();
-      console.log(result);
-      alert("sucess!");
-      navigate(-1)
-    } catch (error){
-      alert("Ocorreu um erro. Tente novamente.");
-      console.log(error)
-    }
+  function createCadastro() {
+    const result = axios.post("/api/users/", {
+      password: password,
+      nfc_id: `${name}-nfc-id`,
+      nome: name,
+      email: email,
+      celular: celular,
+      bio: bio,
+      linkedin: urlLinkedin,
+      github: urlGithub,
+      instagram: urlInstagram,
+      area_profissional: areaAluno,
+      curso: curso,
+      universidade: universidade,
+      card: cardAluno,
+    });
+    // notify();
+    console.log(result);
+    alert("sucess!");
+    navigate(-1);
   }
+
+  // const createCadastro = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const result = await axios.post("/api/users/", {
+  //       // id: 11,
+  //       password: password,
+  //       nfc_id: `${name}-nfc-id2`,
+  //       nome: name,
+  //       email: email,
+  //       celular: celular,
+  //       bio: bio,
+  //       linkedin: urlLinkedin,
+  //       github: urlGithub,
+  //       instagram: urlInstagram,
+  //       area_profissional: areaAluno,
+  //       curso: curso,
+  //       universidade: universidade,
+  //       card: cardAluno,
+  //     });
+  //     notify();
+  //     console.log(result);
+  //     alert("sucess!");
+  //     navigate(-1);
+  //   } catch (error) {
+  //     alert("Ocorreu um erro. Tente novamente.");
+  //     console.log(error);
+  //   }
+  // };
 
   // function handleSaveEstado(state){
   //   setEstado(state)
@@ -138,25 +162,6 @@ export function Create() {
     setCorFonte(cor);
     cardAluno.cor_texto = corFonte;
   }
-
-  const teste = {
-    id: 0,
-    nfc_id: "",
-    nome: name,
-    email: email,
-    senha: password,
-    celular: celular,
-    bio: bio,
-    image: imagemAluno,
-    linkedin: urlLinkedin,
-    github: urlGithub,
-    instagram: areaAluno,
-    area_profissional: urlInstagram,
-    curso: curso,
-    universidade: universidade,
-    card: cardAluno,
-  };
-  // console.log(teste);
 
   return (
     <div className="font-poppins min-h-screen bg-loginBackground bg-cover flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -530,6 +535,7 @@ export function Create() {
               >
                 Cadastrar
               </button>
+              {/* <ToastContainer /> */}
             </div>
           </form>
         </div>
