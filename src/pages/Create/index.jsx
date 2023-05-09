@@ -204,7 +204,6 @@ export function Create() {
               className="mt-3 mb-5 mx-auto w-3/5 w-auto cursor-pointer transform transition-all duration-200 hover:scale-105"
               onClick={backPage}
             />
-            <img src={imagemAluno} alt="teste"/>
           </div>
 
           <form className="space-y-4">
@@ -387,7 +386,7 @@ export function Create() {
                   className="uppercase appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
-            </div> */}
+            </div>  */}
             {/* <Estados saveEstado={handleSaveEstado} saveCidade={handleSaveCidade}/> */}
 
             {/* UNIVERSIDADE */}
@@ -482,7 +481,7 @@ export function Create() {
               >
                 Envie uma foto sua
               </label>
-              <div className="mt-1">
+              <div className="mt-1 flex flex-col items-center">
                 <input
                   id="image"
                   type="file"
@@ -492,6 +491,12 @@ export function Create() {
                   onChange={(e) => setImageAluno(e.target.files[0])}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
+
+                {/* <img
+                  className="mt-4 w-1/6 rounded-full"
+                  src={URL.createObjectURL(imagemAluno)}
+                  alt="Imagem do aluno"
+                /> */}
               </div>
             </div>
 

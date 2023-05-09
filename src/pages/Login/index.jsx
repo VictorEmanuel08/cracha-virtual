@@ -31,7 +31,6 @@ export function Login() {
     }, 1000);
   }
 
-  console.log(mat)
 
   return (
     <div className="w-full h-screen">
