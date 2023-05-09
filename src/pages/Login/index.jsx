@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../../assets/logoGETICOM.png";
 import { useNavigate } from "react-router-dom";
-import backgroundImgNew from "../../assets/backgroundGETICOM.jpg";
+// import backgroundImgNew from "../../assets/backgroundGETICOM.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

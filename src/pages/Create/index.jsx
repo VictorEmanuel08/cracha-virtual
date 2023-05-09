@@ -1,5 +1,6 @@
 import logo from "../../assets/logoGETICOM.png";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+// import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -29,15 +30,16 @@ export function Create() {
   const [imagemAluno, setImageAluno] = useState("");
   const [corCrachaAluno, setCorCrachaAluno] = useState("#FFFFFF");
   const [corFonte, setCorFonte] = useState("#000000");
-  const [cardAluno, setCardAluno] = useState({
+  const cardAluno = {
     id: 1,
     cor_fundo: corCrachaAluno,
     cor_texto: corFonte,
     fonte: "Arial",
     foto: imagemAluno,
-  });
+  };
+
   const [showPassword, setShowPassword] = useState(false);
-  const [dados, setDados] = useState("");
+  // const [dados, setDados] = useState("");
 
   function backPage() {
     navigate(-1);
@@ -60,14 +62,14 @@ export function Create() {
     });
   };
 
-  useEffect(() => {
-    axios
-      .get("/api/users/2")
-      .then((response) => setDados(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/users/1")
+  //     .then((response) => setDados(response.data))
+  //     .catch((error) => console.log(error));
+  // }, []);
 
-  console.log(dados);
+  // console.log(dados);
 
   // async function createCadastro() {
   //   try {
@@ -110,10 +112,25 @@ export function Create() {
       universidade: universidade,
       card: cardAluno,
     });
-    // notify();
+    console.log({
+      password: password,
+      nfc_id: `${name}-nfc-id`,
+      nome: name,
+      email: email,
+      celular: celular,
+      bio: bio,
+      linkedin: urlLinkedin,
+      github: urlGithub,
+      instagram: urlInstagram,
+      area_profissional: areaAluno,
+      curso: curso,
+      universidade: universidade,
+      card: cardAluno,
+    });
+    notify();
     console.log(result);
-    alert("sucess!");
-    navigate(-1);
+    // alert("sucess!");
+    // navigate(-1);
   }
 
   // const createCadastro = async (e) => {
@@ -157,6 +174,7 @@ export function Create() {
     setCorCrachaAluno(cor);
     cardAluno.cor_fundo = corCrachaAluno;
   }
+
   function handleChangeColorText(event) {
     const cor = event.target.value;
     setCorFonte(cor);
@@ -186,6 +204,7 @@ export function Create() {
               className="mt-3 mb-5 mx-auto w-3/5 w-auto cursor-pointer transform transition-all duration-200 hover:scale-105"
               onClick={backPage}
             />
+            <img src={imagemAluno} alt="teste"/>
           </div>
 
           <form className="space-y-4">
@@ -470,7 +489,7 @@ export function Create() {
                   name="image"
                   accept="image/png, image/jpeg, image/jpg"
                   required
-                  onChange={(e) => setImageAluno(e.target.value)}
+                  onChange={(e) => setImageAluno(e.target.files[0])}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -535,7 +554,7 @@ export function Create() {
               >
                 Cadastrar
               </button>
-              {/* <ToastContainer /> */}
+              <ToastContainer />
             </div>
           </form>
         </div>

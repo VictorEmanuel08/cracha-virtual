@@ -1,62 +1,27 @@
-import seloRocket from "../../assets/build.svg";
-import iconGithub from "../../assets/github.svg";
-import iconYoutube from "../../assets/youtube.svg";
-import iconInstagram from "../../assets/instagram.svg";
-import iconFacebook from "../../assets/facebook.svg";
-import iconTwitter from "../../assets/twitter.svg";
-import React, { useState } from "react";
+import React from "react";
+// import logo from "../../assets/logoGETICOM.png";
 
 export function Home() {
   return (
-    <div id="container" classNameName="w-screen h-screen bg-black text-white">
-      <div id="avatar" className="">
-        <span>
-          <img src={seloRocket} alt="Selo Rocketseat" />
-        </span>
+    <div className="font-poppins min-h-screen bg-loginBackground bg-cover flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8">
+      <div class="relative bg-[#FCFCFC] w-[507px] h-[653px] flex flex-col items-center justify-center shadow-lg rounded-lg">
+        <svg class="absolute top-0 left-0 w-full h-full">
+          <path d="M77 0L-45 157L-45 0L77 0Z" fill="#1A82EC" />
+          <path d="M254 157L77 0L254 0V157Z" fill="#003368" />
+          <path d="M-45 156L77 -1V156H-45Z" fill="#1E4488" />
+          <path d="M77 -1L254 156L77 156L77 -1Z" fill="#004D9B" />
+          <path d="M431 156L553 -1V156H431Z" fill="#1A82EC" />
+          <path d="M254 -1L431 156L254 156L254 -1Z" fill="#003368" />
+          <path d="M553 -1L431 156V-1L553 -1Z" fill="#1E4488" />
+          <path d="M431 156L254 -1L431 -1L431 156Z" fill="#004D9B" />
+        </svg>
         <img
-          id="userAvatar"
-          src="https://progsoft.net/images/placekitten-icon-68d5c7a460d9d7bbc75d3ccb171ae2ccdea39408.jpg"
-          alt="Foto do usuário"
+          src="https://via.placeholder.com/150"
+          alt="profile"
+          class="absolute -top-[90px] w-[185px] h-[185px] rounded-full object-cover border-4 border-#004D9B "
         />
+        <p class="text-lg font-semibold mt-8">Hello world</p>
       </div>
-
-      <h1 id="userName">Victor Emanuel</h1>
-      <p id="UserId">020202</p>
-
-      {/* Texto */}
-      <a id="userLink" href="https://github.com/" target="_blank">
-        <img src={iconGithub} alt="ícone Github" />
-        <span id="userLogin">VictorEmanuel</span>
-        {/* texto que não é parágrafo */}
-      </a>
-      {/* a = atribuição será feita
-            href = atributo -> referencia - linkar
-            "(conteudi=o) = valor do atributo" */}
-
-      <p id="UserBio">"Um aluno focado em aprender programação Web</p>
-
-      <ul id="socialLinks">
-        <li id="youtube">
-          <a href="https://www.youtube.com/" target="_blank">
-            <img src={iconYoutube} alt="ícone youtube" />
-          </a>
-        </li>
-        <li id="instagram">
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src={iconInstagram} alt="icone instagram" />
-          </a>
-        </li>
-        <li id="facebook">
-          <a href="https://pt-br.facebook.com/" target="_blank">
-            <img src={iconFacebook} alt="icone facebook" />
-          </a>
-        </li>
-        <li id="twitter">
-          <a href="https://twitter.com/" target="_blank" rel="noopener">
-            <img src={iconTwitter} alt="icone twitter" />
-          </a>
-        </li>
-      </ul>
     </div>
   );
 }
